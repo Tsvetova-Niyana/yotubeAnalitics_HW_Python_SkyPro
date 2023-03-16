@@ -1,0 +1,7 @@
+Название: Ютуб-аналитика
+
+poetry/pip: pip + venv
+
+Тесты: pytest
+
+cannal_id: 'UCe2t5n3zdgHMVtYq3FC_wtA'
