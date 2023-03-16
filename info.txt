@@ -4,4 +4,4 @@ poetry/pip: pip + venv
 
 Тесты: pytest
 
-cannal_id: 'UCe2t5n3zdgHMVtYq3FC_wtA'
+cannal_id: 'UCYfYQ1lmPwPdxjBpW_rMJ7w'
