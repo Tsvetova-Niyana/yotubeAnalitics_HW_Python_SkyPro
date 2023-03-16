@@ -7,6 +7,7 @@ class Channel:
     def __init__(self, channel_id):
         self.id = channel_id
 
+
     def print_info(self):
         api_key: str = os.getenv('API_KEY')
 
