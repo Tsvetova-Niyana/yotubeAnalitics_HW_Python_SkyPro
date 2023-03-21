@@ -23,5 +23,6 @@ if __name__ == '__main__':
     print(Channel.get_service())
 
     # Проверка отсутствия возможности изменения id канала
+    print()
     channel1.id = 'efgterhthe'
     print(channel1.id)
