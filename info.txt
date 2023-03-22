@@ -4,4 +4,6 @@ poetry/pip: pip + venv
 
 Тесты: pytest
 
-cannal_id: 'UCYfYQ1lmPwPdxjBpW_rMJ7w'
+cannal_id: 'UCYfYQ1lmPwPdxjBpW_rMJ7w' # Radio Tapok
+cannal_id: 'UCHH3KHUqDJX_CoRbqLy1zNg' # Александр Пушной
+cannal_id: 'UCvqXOuAHAc76rtZVVE4qfJw' # Кирилл Антонов

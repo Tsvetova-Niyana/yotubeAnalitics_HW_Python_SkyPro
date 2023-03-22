@@ -39,7 +39,34 @@ class Channel:
                f"Общее количество просмотров: {self.view_count}"
 
     def __str__(self):
+        """Реализуйте для класса Канал магический метод для вывода через print() информации о канале:
+        Youtube-канал: <название_канала>"""
         return f"Youtube-канал: {self.title_channel}"
+
+    def __gt__(self, other):
+        """Реализуйте возможность сравнивать два канала на больше между собой.
+        Сравнение идет по количеству подписчиков."""
+        if isinstance(other, Channel):
+            return int(self.subscriber_count) > int(other.subscriber_count)
+        else:
+            raise TypeError("Сравниваются количества подписчиков каналов!")
+
+    def __lt__(self, other):
+        """Реализуйте возможность сравнивать два канала на меньше между собой.
+            Сравнение идет по количеству подписчиков."""
+        if isinstance(other, Channel):
+            return int(self.subscriber_count) < int(other.subscriber_count)
+        else:
+            raise TypeError("Сравниваются количества подписчиков каналов!")
+
+    def __add__(self, other):
+        """Реализуйте возможность складывать два канала между собой.
+        Сложение идет по количеству подписчиков."""
+        if isinstance(other, Channel):
+            return int(self.subscriber_count) + int(other.subscriber_count)
+        else:
+            raise TypeError("Складываются количества подписчики каналов!")
+
 
     @property
     def id(self):
