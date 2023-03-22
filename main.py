@@ -18,11 +18,16 @@ if __name__ == '__main__':
     # Сохранение сведений о канале в файл json
     channel1.to_json(f'{channel1.title_channel}.json')
 
-    # Получичение объекта для работы с API вне класса
+    # Получение объекта для работы с API вне класса
     print()
     print(Channel.get_service())
 
     # Проверка отсутствия возможности изменения id канала
+    # print()
+    # channel1.id = 'efgterhthe'
+    # print(channel1.id)
+
     print()
-    channel1.id = 'efgterhthe'
-    print(channel1.id)
+    print(channel1)
+
+

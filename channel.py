@@ -38,6 +38,9 @@ class Channel:
                f"Количество видео: {self.video_count}\n" \
                f"Общее количество просмотров: {self.view_count}"
 
+    def __str__(self):
+        return f"Youtube-канал: {self.title_channel}"
+
     @property
     def id(self):
         """Геттер для id канала"""
