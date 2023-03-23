@@ -1,7 +1,5 @@
-import os
-
-from googleapiclient.discovery import build
 import json
+from service import Service
 
 
 class Channel:
@@ -20,7 +18,8 @@ class Channel:
         Сделайте так, чтобы можно было получить id канала, но нельзя было его изменять/удалять."""
         self.__id = channel_id
 
-        self.channel = self.get_service().channels().list(id=self.id, part='snippet,statistics').execute()
+        self.__channels = Service()
+        self.channel = self.__channels.get_service().channels().list(id=self.id, part='snippet,statistics').execute()
 
         self.title_channel = self.channel['items'][0]['snippet']['title']
         self.description = self.channel['items'][0]['snippet']['description']
@@ -67,19 +66,10 @@ class Channel:
         else:
             raise TypeError("Складываются количества подписчики каналов!")
 
-
     @property
     def id(self):
         """Геттер для id канала"""
         return self.__id
-
-    @classmethod
-    def get_service(cls):
-        """Реализуйте метод класса, который возвращает объект для работы с API ютуба.
-        Используйте этот метод в классе, чтобы избежать дублирования кода."""
-        api_key: str = os.getenv('API_KEY')
-        youtube = build('youtube', 'v3', developerKey=api_key)
-        return youtube
 
     def to_json(self, name_file):
         """Реализуйте метод, который сохраняет информацию по каналу, хранящуюся в атрибутах экземпляра класса Channel,
@@ -99,3 +89,13 @@ class Channel:
     def print_info(self):
         """Функция вывода информации о канале"""
         print(json.dumps(self.channel, indent=2, ensure_ascii=False))
+
+    def print_info_video_by_channel(self):
+        """Функция вывода информации о всех видео канала (можно дернуть id)"""
+        video_info = self.__channels.get_service().search().list(channelId=self.id,
+                                                                 part="snippet",
+                                                                 type='video',
+                                                                 order='rating',
+                                                                 maxResults="15", ).execute()
+        print(json.dumps(video_info, indent=2, ensure_ascii=False))
+
