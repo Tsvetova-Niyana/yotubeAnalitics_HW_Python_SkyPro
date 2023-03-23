@@ -15,8 +15,8 @@ from service import Service
 
 
 class PLVideo(Video):
-    def __init__(self, id, id_playlist):
-        super().__init__(id)
+    def __init__(self, id_video, id_playlist):
+        super().__init__(id_video)
         self.__id_playlist = id_playlist
 
         playlist = Service()
@@ -32,7 +32,7 @@ class PLVideo(Video):
         return self.__id_playlist
 
     def __repr__(self):
-        return f'id_video: {self.id}\n' \
+        return f'id_video: {self.id_video}\n' \
                f'playlist: {self.id_playlist}\n' \
                f'name_video: {self.name_video}\n' \
                f'view_count_video: {self.view_count}\n' \
