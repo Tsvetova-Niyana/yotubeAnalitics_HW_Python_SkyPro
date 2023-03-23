@@ -12,7 +12,7 @@ from service import Service
 
 class Video:
     def __init__(self, id):
-        self.__id = id
+        self.__id_video = id
 
         video = Service()
         self.__video = video.get_service().videos().list(part='snippet,statistics', id=self.id).execute()
@@ -23,7 +23,7 @@ class Video:
 
     @property
     def id(self):
-        return self.__id
+        return self.__id_video
 
     def __repr__(self):
         return f'id_video: {self.id}\n' \

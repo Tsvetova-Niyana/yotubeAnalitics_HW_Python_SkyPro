@@ -14,4 +14,7 @@ if __name__ == '__main__':
     video2 = Video('jXjwWIMTugY') # PLPOCJi2SznkrxxjSUC3Drb-cAL3wcUKD8
     video3 = PLVideo('jXjwWIMTugY', 'PLPOCJi2SznkrxxjSUC3Drb-cAL3wcUKD8') # PLPOCJi2SznkrxxjSUC3Drb-cAL3wcUKD8
 
-    print(video1.__video)
+    print(video2.name_video)
+    print(video2.view_count)
+    print(video2.count_of_likes)
+
