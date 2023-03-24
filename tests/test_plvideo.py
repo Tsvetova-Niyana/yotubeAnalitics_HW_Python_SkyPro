@@ -4,7 +4,7 @@ from plvdeo import PLVideo
 
 class TestPLVideo:
     def test_check_get_id_playlist(self):
-        """Проверка получения id плейлиста (id_playlist) видео при помощи геттера при инициализации"""
+        """Проверка получения id плейлиста (id_playlist) видео с помощью геттера"""
         video_1 = PLVideo('jXjwWIMTugY', 'PLPOCJi2SznkrxxjSUC3Drb-cAL3wcUKD8')
         assert video_1.id_playlist == 'PLPOCJi2SznkrxxjSUC3Drb-cAL3wcUKD8'
 
@@ -14,12 +14,12 @@ class TestPLVideo:
         assert video_1.id_video == 'jXjwWIMTugY'
 
     def test_check_playlist_name(self):
-        """Проверка получения id видео (id_video)"""
+        """Проверка получения названия плейлиста (playlist_name)"""
         video_1 = PLVideo('jXjwWIMTugY', 'PLPOCJi2SznkrxxjSUC3Drb-cAL3wcUKD8')
         assert video_1.playlist_name == 'РОК ЖИВ'
 
     def test_check_name_video(self):
-        """Проверка получения id видео (id_video)"""
+        """Проверка получения названия видео (name_video)"""
         video_1 = PLVideo('jXjwWIMTugY', 'PLPOCJi2SznkrxxjSUC3Drb-cAL3wcUKD8')
         assert video_1.name_video == 'Rammstein | РОК ЖИВ'
 
@@ -55,6 +55,6 @@ class TestPLVideo:
         assert str(video_1) == f'{video_1.name_video} ({video_1.playlist_name})'
 
     def test_check_print_info(self):
-        """Проверка работы метода print_info для получения информации о плейлисте для класса PLVideo"""
+        """Проверка работы метода print_info (функция для получения информации о плейлисте) для класса PLVideo"""
         video_1 = PLVideo('jXjwWIMTugY', 'PLPOCJi2SznkrxxjSUC3Drb-cAL3wcUKD8')
         assert str(video_1.print_info) is not None

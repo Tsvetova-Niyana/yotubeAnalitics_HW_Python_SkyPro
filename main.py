@@ -142,3 +142,13 @@ if __name__ == '__main__':
     print("Проверка выполнения метода __repr__ для плейлиста:")
     print()
     print(repr(video3))
+
+    # Проверка инициализации экземпляра класса Service
+    print()
+    print("Проверка инициализации экземпляра класса Service")
+    service = Service()
+    print(service)
+
+    # Проверка работы метода get_service() класса Service
+    print()
+    print(service.get_service())

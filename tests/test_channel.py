@@ -158,7 +158,7 @@ class TestChannel:
             (channel_1 + 10)
 
     def test_check_get_channel_id(self):
-        """Проверка получения id канала (id) канала при помощи геттера при инициализации"""
+        """Проверка получения id канала (id) канала с помощью геттера"""
         channel_1 = Channel('UCHH3KHUqDJX_CoRbqLy1zNg')
         assert channel_1.id == 'UCHH3KHUqDJX_CoRbqLy1zNg'
 
@@ -183,14 +183,15 @@ class TestChannel:
         assert channel_1.subscriber_count == '1400000'
 
     def test_check_video_count_channel(self):
-        """Проверка получения количество видео (subscriber_count) канала при инициализации"""
+        """Проверка получения количество видео (video_count) канала при инициализации"""
         channel_1 = Channel('UCHH3KHUqDJX_CoRbqLy1zNg')
         assert channel_1.video_count == '249'
 
     def test_check_view_count_channel(self):
-        """Проверка получения общее количество просмотров (view_count) канала при инициализации"""
+        """Проверка получения общее количество просмотров (view_count) канала при инициализации.
+        Показатель динамически изменяется"""
         channel_1 = Channel('UCHH3KHUqDJX_CoRbqLy1zNg')
-        assert channel_1.view_count == '146252479'
+        assert channel_1.view_count is not None
 
     def test_check_repr_channel(self):
         """Проверка корректности работы метода __repr__ для класса Channel"""
