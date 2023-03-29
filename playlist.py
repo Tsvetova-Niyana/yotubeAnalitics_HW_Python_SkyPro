@@ -38,7 +38,7 @@ class Playlist:
     def total_duration(self):
         # print(json.dumps(self.playlist_info, indent=2, ensure_ascii=False))
 
-        print(json.dumps(self.__video_response, indent=2, ensure_ascii=False))
+        # print(json.dumps(self.__video_response, indent=2, ensure_ascii=False))
         total_duration = datetime.timedelta()
         for video in self.__video_response['items']:
             # Длительности YouTube-видео представлены в ISO 8601 формате
