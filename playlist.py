@@ -15,34 +15,51 @@ class Playlist:
 
         self.id = id
 
-        self.youtube = Service().get_service()
-        self.playlist_info = self.youtube.playlists().list(
+        self.__youtube = Service().get_service()
+        self.__playlist_info = self.__youtube.playlists().list(
             part='snippet',
             id=self.id
         ).execute()
-        self.title = self.playlist_info["items"][0]["snippet"]["localized"]["title"]
+        self.title = self.__playlist_info["items"][0]["snippet"]["localized"]["title"]
         self.link_playlist = f'https://www.youtube.com/playlist?list={self.id}'
 
-    @property
-    def sum_duration(self):
-        # print(json.dumps(self.playlist_info, indent=2, ensure_ascii=False))
+        self.__pl_video = self.__youtube.playlistItems().list(playlistId=self.id,
+                                                              part='contentDetails',
+                                                              maxResults=50,
+                                                              ).execute()
         # получить все id видеороликов из плейлиста
-        self.pl_video = self.youtube.playlistItems().list(playlistId=self.id,
-                                                          part='contentDetails',
-                                                          maxResults=50,
-                                                          ).execute()
+        video_ids: list[str] = [video['contentDetails']['videoId'] for video in self.__pl_video['items']]
 
-        video_ids: list[str] = [video['contentDetails']['videoId'] for video in self.pl_video['items']]
+        self.__video_response = self.__youtube.videos().list(part='contentDetails,statistics',
+                                                             id=','.join(video_ids)
+                                                             ).execute()
 
-        video_response = self.youtube.videos().list(part='contentDetails,statistics',
-                                                    id=','.join(video_ids)
-                                                    ).execute()
+    @property
+    def total_duration(self):
+        # print(json.dumps(self.playlist_info, indent=2, ensure_ascii=False))
 
+        print(json.dumps(self.__video_response, indent=2, ensure_ascii=False))
         total_duration = datetime.timedelta()
-        for video in video_response['items']:
+        for video in self.__video_response['items']:
             # Длительности YouTube-видео представлены в ISO 8601 формате
             iso_8601_duration = video['contentDetails']['duration']
             duration = isodate.parse_duration(iso_8601_duration)
             total_duration += duration
 
         return total_duration
+
+    def show_best_video(self):
+        max_likes = 0
+        for video in self.__video_response['items']:
+            current_likes = video["statistics"]["likeCount"]
+            # print(current_likes)
+            # print(type(current_likes))
+            # print(type(int(current_likes)))
+            if int(current_likes) > int(max_likes):
+                max_likes = video["statistics"]["likeCount"]
+                id_video = video["id"]
+            # print(current_likes)
+        # print(max_likes, id_video)
+        link_best_video = f'https://www.youtube.com/watch?v={id_video}'
+        print(link_best_video)
+

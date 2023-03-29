@@ -19,7 +19,11 @@ if __name__ == '__main__':
     print(playlist.title)
     print(playlist.link_playlist)
     # playlist.print_info()
-    print(playlist.sum_duration)
+    duration = playlist.total_duration
+    print(duration)
+    print(type(duration))
+    print(duration.total_seconds())
+    playlist.show_best_video()
 
     # # Получение информации о канале из класса(__repr__)
     # print("Получение информации о канале из класса(__repr__):")
