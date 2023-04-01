@@ -34,6 +34,11 @@ class Playlist:
 
     @property
     def total_duration(self):
+        """`PlayList` поддерживает следующие методы:
+
+        - посчитать суммарную длительность плейлиста (обращение как к свойству, использовать @property).
+        Возвращает объект класса `datetime.timedelta`
+        """
 
         total_duration = datetime.timedelta()
         for video in self.__video_response['items']:
@@ -45,6 +50,9 @@ class Playlist:
         return total_duration
 
     def show_best_video(self):
+        """`PlayList` поддерживает следующие методы:
+            - напечатать ссылку на самое популярное видео из плейлиста (по количеству лайков)"""
+
         max_likes = 0
         id_video = ''
         for video in self.__video_response['items']:
@@ -57,7 +65,11 @@ class Playlist:
         return link_best_video
 
     def print_info_video_in_playlist(self):
+        """Получение информации о видео, находящихся в плейлисте"""
+
         print(json.dumps(self.__video_response, indent=2, ensure_ascii=False))
 
     def print_info_playlist(self):
+        """Получение информации о плейлисте"""
+
         print(json.dumps(self.__playlist_info, indent=2, ensure_ascii=False))
