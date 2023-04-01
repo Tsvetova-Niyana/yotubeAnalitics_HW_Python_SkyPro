@@ -2,6 +2,7 @@ from channel import Channel
 from service import Service
 from video import Video
 from plvdeo import PLVideo
+from playlist import Playlist
 
 if __name__ == '__main__':
     # Создание экземпляра класса
@@ -12,6 +13,33 @@ if __name__ == '__main__':
     video1 = Video('sZ71LP1EbgU')
     video2 = Video('jXjwWIMTugY')  # PLPOCJi2SznkrxxjSUC3Drb-cAL3wcUKD8
     video3 = PLVideo('jXjwWIMTugY', 'PLPOCJi2SznkrxxjSUC3Drb-cAL3wcUKD8')  # PLPOCJi2SznkrxxjSUC3Drb-cAL3wcUKD8
+
+    playlist = Playlist('PLPOCJi2SznkrxxjSUC3Drb-cAL3wcUKD8')
+
+    # Получение наименования плейлиста
+    print(playlist.title)
+
+    # Получение ссылку на плейлист
+    print(playlist.url)
+
+    # Получение длительности плейлиста
+    duration = playlist.total_duration
+    print(duration)
+
+    # Получение типа длительности плейлиста
+    print(type(duration))
+
+    # Получение длительности плейлиста в секундах
+    print(duration.total_seconds())
+
+    # Получение ссылки на лучшее видео в плейлисте
+    print(playlist.show_best_video())
+
+    # Получение информации о видео в плейлисте
+    playlist.print_info_video_in_playlist()
+
+    # Получение информации о плейлисте
+    playlist.print_info_playlist()
 
     # Получение информации о канале из класса(__repr__)
     print("Получение информации о канале из класса(__repr__):")
