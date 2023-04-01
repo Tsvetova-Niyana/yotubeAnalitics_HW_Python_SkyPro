@@ -33,7 +33,7 @@ if __name__ == '__main__':
     print(duration.total_seconds())
 
     # Получение ссылки на лучшее видео в плейлисте
-    playlist.show_best_video()
+    print(playlist.show_best_video())
 
     # Получение информации о видео в плейлисте
     playlist.print_info_video_in_playlist()

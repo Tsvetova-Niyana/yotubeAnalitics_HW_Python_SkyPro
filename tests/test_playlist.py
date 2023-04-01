@@ -53,4 +53,4 @@ class TestPlaylist:
     def test_check_print_info_playlist(self):
         """Получение информации о (print_info_playlist()) плейлисте"""
         playlist = Playlist('PLPOCJi2Sznkr2p-HenHsOQ384fkek4QB5')
-        assert str(playlist.print_info_playlist()) is not None
+        assert str(playlist.print_info_playlist) is not None

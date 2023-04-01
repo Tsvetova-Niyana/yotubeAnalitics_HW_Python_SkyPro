@@ -1,5 +1,4 @@
 import json
-
 import isodate
 
 import datetime
@@ -47,6 +46,7 @@ class Playlist:
 
     def show_best_video(self):
         max_likes = 0
+        id_video = ''
         for video in self.__video_response['items']:
             current_likes = video["statistics"]["likeCount"]
             if int(current_likes) > int(max_likes):
