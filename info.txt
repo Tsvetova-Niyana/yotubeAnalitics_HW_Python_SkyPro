@@ -7,3 +7,5 @@ poetry/pip: pip + venv
 cannal_id: 'UCYfYQ1lmPwPdxjBpW_rMJ7w' # Radio Tapok
 cannal_id: 'UCHH3KHUqDJX_CoRbqLy1zNg' # Александр Пушной
 cannal_id: 'UCvqXOuAHAc76rtZVVE4qfJw' # Кирилл Антонов
+
+plailist - "PLPOCJi2Sznkr2p-HenHsOQ384fkek4QB5" ('Пушной. ВСЕ каверы на 8-струнке. "А кому сейчас легко?"')

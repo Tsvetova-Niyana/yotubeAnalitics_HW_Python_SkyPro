@@ -1,8 +1,7 @@
 import json
-import os
 
 import isodate
-from googleapiclient.discovery import build
+
 import datetime
 from service import Service
 
@@ -21,7 +20,7 @@ class Playlist:
             id=self.id
         ).execute()
         self.title = self.__playlist_info["items"][0]["snippet"]["localized"]["title"]
-        self.link_playlist = f'https://www.youtube.com/playlist?list={self.id}'
+        self.url = f'https://www.youtube.com/playlist?list={self.id}'
 
         self.__pl_video = self.__youtube.playlistItems().list(playlistId=self.id,
                                                               part='contentDetails',
@@ -36,9 +35,7 @@ class Playlist:
 
     @property
     def total_duration(self):
-        # print(json.dumps(self.playlist_info, indent=2, ensure_ascii=False))
 
-        # print(json.dumps(self.__video_response, indent=2, ensure_ascii=False))
         total_duration = datetime.timedelta()
         for video in self.__video_response['items']:
             # Длительности YouTube-видео представлены в ISO 8601 формате
@@ -52,14 +49,15 @@ class Playlist:
         max_likes = 0
         for video in self.__video_response['items']:
             current_likes = video["statistics"]["likeCount"]
-            # print(current_likes)
-            # print(type(current_likes))
-            # print(type(int(current_likes)))
             if int(current_likes) > int(max_likes):
                 max_likes = video["statistics"]["likeCount"]
                 id_video = video["id"]
-            # print(current_likes)
-        # print(max_likes, id_video)
-        link_best_video = f'https://www.youtube.com/watch?v={id_video}'
-        print(link_best_video)
 
+        link_best_video = f'https://www.youtube.com/watch?v={id_video}'
+        return link_best_video
+
+    def print_info_video_in_playlist(self):
+        print(json.dumps(self.__video_response, indent=2, ensure_ascii=False))
+
+    def print_info_playlist(self):
+        print(json.dumps(self.__playlist_info, indent=2, ensure_ascii=False))
